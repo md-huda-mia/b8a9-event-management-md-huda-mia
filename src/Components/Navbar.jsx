@@ -28,7 +28,7 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to={"/details"}>About</NavLink>
+              <NavLink to="/about">About</NavLink>
             </li>
           </ul>
         </div>
@@ -44,19 +44,18 @@ const Navbar = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <a>About</a>
+            <NavLink to="/about">About</NavLink>
           </li>
         </ul>
       </div>
 
       <div className="navbar-end">
         <div className="">
-          <a className="py-1 rounded  px-3 bg-gray-300 cursor-pointer mr-2">
+          <NavLink
+            to="/login"
+            className="py-1 rounded  px-3 bg-gray-300 cursor-pointer mr-2">
             Login
-          </a>
-          <a className="py-1 rounded  px-3 bg-gray-300 cursor-pointer mr-2">
-            LogOut
-          </a>
+          </NavLink>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
