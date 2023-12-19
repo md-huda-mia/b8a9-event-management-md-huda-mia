@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Gastronomic Delights Festival",
+    "name": "Culinary Fusion Extravaganza",
+    "image": "link_to_image1.jpg",
+    "price": 75,
+    "shortDescription": "Indulge your taste buds in a culinary journey featuring renowned chefs, delectable dishes, and a feast for the senses."
+  },
+  {
+    "title": "Tech Innovators Summit",
+    "name": "FutureTech Connect",
+    "image": "https://i.ibb.co/b7fQ6R5/projector2.jpg",
+    "price": 199,
+    "shortDescription": "Explore the cutting edge of technology, network with industry leaders, and witness groundbreaking innovations shaping the future."
+  },
+  {
+    "title": "Artistry in Motion Dance Gala",
+    "name": "Rhythmic Elegance Showcase",
+    "image": "link_to_image3.jpg",
+    "price": 50,
+    "shortDescription": "Experience the grace and beauty of dance as talented performers showcase their artistry in a mesmerizing evening of movement and expression."
+  },
+  {
+    "title": "Adventure Travel Expedition",
+    "name": "Expedition Explorer Quest",
+    "image": "link_to_image4.jpg",
+    "price": 120,
+    "shortDescription": "Embark on a thrilling adventure, discover hidden treasures, and forge unforgettable memories in this epic expedition for the daring traveler."
+  },
+  {
+    "title": "Environmental Sustainability Symposium",
+    "name": "EcoConscious Forum",
+    "image": "link_to_image5.jpg",
+    "price": 0,
+    "shortDescription": "Join experts and activists in a dialogue on sustainable practices, environmental conservation, and collective efforts towards a greener future."
+  },
+  {
+    "title": "Music Harmony Concert",
+    "name": "Melodic Bliss Harmony",
+    "image": "link_to_image6.jpg",
+    "price": 30,
+    "shortDescription": "Immerse yourself in a night of enchanting melodies, where diverse musical genres blend seamlessly to create a harmonious celebration of the universal language of music."
+  }
+]
