@@ -1,8 +1,9 @@
 import React from "react";
+import OurService from "./OurService";
 
 const EventContent = () => {
   return (
-    <div className="bg-[#fff] p-8">
+    <div className="bg-[#fff] shadow p-8">
       <div className="text-center text-3xl font-bold mb-5">WHO WE ARE</div>
       <div className="">
         <p className="mt-6 text-gray-500">
@@ -45,11 +46,7 @@ const EventContent = () => {
         </p>
 
         {/* === our event ===== */}
-        <div className="">
-          <div className="">
-            <img src="" alt="" />
-          </div>
-        </div>
+        <OurService />
       </div>
     </div>
   );
