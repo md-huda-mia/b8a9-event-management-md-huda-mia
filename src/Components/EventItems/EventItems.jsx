@@ -16,7 +16,7 @@ const EventItems = () => {
       </h1>
       <div className="grid grid-cols-3 gap-8">
         {data?.map((item) => (
-          <EventCard item={item} />
+          <EventCard item={item} key={item.id} />
         ))}
       </div>
     </div>

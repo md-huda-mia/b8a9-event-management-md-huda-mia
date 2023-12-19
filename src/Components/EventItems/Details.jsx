@@ -3,21 +3,21 @@ import { useLoaderData, useParams } from "react-router-dom";
 import DetailsCard from "./DetailsCard";
 
 const Details = () => {
-  const [event, setEvent] = useState({});
+  const [phone, setPhone] = useState({});
+
   const { id } = useParams();
-
-  const events = useLoaderData();
-
+  const phones = useLoaderData();
+  console.log(phones);
   useEffect(() => {
-    const findEvent = events?.find((event) => event.id === id);
-    setEvent(findEvent);
-  }, [id, events]);
+    const findPhone = phones?.find((phone) => phone.id === id);
+    setPhone(findPhone);
+    console.log(findPhone);
+  }, [id, phones]);
 
-  console.log(event);
-
+  console.log(phone);
   return (
-    <div>
-      <DetailsCard />
+    <div className="p-16 bg-[#f8f8f8]">
+      <DetailsCard event={phone} />
     </div>
   );
 };
