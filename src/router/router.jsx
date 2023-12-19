@@ -1,5 +1,6 @@
-const { createBrowserRouter } = require("react-router-dom");
-const { default: App } = require("../App");
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import Details from "../Components/EventItems/Details";
 
 const router = createBrowserRouter([
   {
@@ -7,8 +8,9 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",
-        element: <></>,
+        path: "/details",
+        element: <Details />,
+        loader: () => fetch("/data.json"),
       },
     ],
   },
