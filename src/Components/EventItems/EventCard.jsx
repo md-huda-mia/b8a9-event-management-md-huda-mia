@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const EventCard = ({ item }) => {
   const { title, image, price, shortDescription, id } = item || {};
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact bg-base-100 shadow-xl">
       <figure>
         <img src={image} alt="Shoes" />
       </figure>
@@ -12,7 +12,7 @@ const EventCard = ({ item }) => {
         <h2 className="card-title">{title}</h2>
         <p>{shortDescription}</p>
         <div className="card-actions justify-end">
-          <Link to={`./details/${id}`}>
+          <Link to={`/details/${id}`}>
             <button className="btn ">View Details</button>
           </Link>
         </div>
