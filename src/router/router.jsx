@@ -4,8 +4,8 @@ import MainLayout from "../MainLayout/MainLayout";
 // import DetailsCard from "../Components/EventItems/DetailsCard";
 import Details from "../Components/EventItems/Details";
 import { Login } from "../pages/Login";
-import { SignIn } from "../pages/SignIn";
 import About from "../pages/About";
+import { SignUp } from "../pages/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/sign",
-        element: <SignIn />,
+        path: "/signUp",
+        element: <SignUp />,
       },
       {
         path: "/about",

@@ -1,8 +1,30 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import UserAuth from "../Hook/UserAuth";
+import { toast } from "react-toastify";
 
 export function Login() {
+  const { loginUser } = UserAuth();
+  const navigation = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const all = e.target;
+    const email = all.email.value;
+    const password = all.password.value;
+
+    loginUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigation("/");
+        console.log(user);
+        toast("Create User Successfull");
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  };
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -26,13 +48,17 @@ export function Login() {
           <p className="mt-2 text-center text-sm text-gray-600 ">
             Don&apos;t have an account?{" "}
             <NavLink
-              to="/sign"
+              to="/signUp"
               title=""
               className="font-semibold text-black transition-all duration-200 hover:underline">
               Create a free account
             </NavLink>
           </p>
-          <form action="#" method="POST" className="mt-8">
+          <form
+            onSubmit={submitHandler}
+            action="#"
+            method="POST"
+            className="mt-8">
             <div className="space-y-5">
               <div>
                 <label
@@ -43,6 +69,7 @@ export function Login() {
                 </label>
                 <div className="mt-2">
                   <input
+                    name="email"
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
                     placeholder="Email"></input>
@@ -66,6 +93,7 @@ export function Login() {
                 </div>
                 <div className="mt-2">
                   <input
+                    name="password"
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
                     placeholder="Password"></input>
@@ -73,7 +101,7 @@ export function Login() {
               </div>
               <div>
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
                   Get started <ArrowRight className="ml-2" size={16} />
                 </button>

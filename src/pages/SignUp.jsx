@@ -1,8 +1,41 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import UserAuth from "../Hook/UserAuth";
+import { toast } from "react-toastify";
 
-export function SignIn() {
+export function SignUp() {
+  const { createUser, updateUser } = UserAuth();
+  const navigation = useNavigate();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const all = e.target;
+    const name = all.name.value;
+    const email = all.email.value;
+    const password = all.password.value;
+
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        toast("Create User Successfull");
+        updateUser(name)
+          .then((result) => {
+            toast.success("User Name Updated");
+            navigation("/");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorCode, errorMessage);
+        console.log(errorMessage);
+      });
+  };
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -32,7 +65,11 @@ export function SignIn() {
               Sign In
             </NavLink>
           </p>
-          <form action="#" method="POST" className="mt-8">
+          <form
+            onSubmit={submitHandler}
+            action="#"
+            method="POST"
+            className="mt-8">
             <div className="space-y-5">
               <div>
                 <label
@@ -43,6 +80,7 @@ export function SignIn() {
                 </label>
                 <div className="mt-2">
                   <input
+                    name="name"
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="text"
                     placeholder="Full Name"
@@ -58,6 +96,7 @@ export function SignIn() {
                 </label>
                 <div className="mt-2">
                   <input
+                    name="email"
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
                     placeholder="Email"
@@ -75,6 +114,7 @@ export function SignIn() {
                 </div>
                 <div className="mt-2">
                   <input
+                    name="password"
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
                     placeholder="Password"
@@ -83,7 +123,7 @@ export function SignIn() {
               </div>
               <div>
                 <button
-                  type="button"
+                  type="submit"
                   className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
                   Create Account <ArrowRight className="ml-2" size={16} />
                 </button>
